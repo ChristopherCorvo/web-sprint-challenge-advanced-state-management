@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 // ----------- import needed Actions ----------------
 import { fetchSmurfsData } from '../store/actions/index'
 
+// ------- import components ------------
+import SmurfForm from './SmurfForm'
+
 
 const SmurfVillage = (props) => {
     
@@ -18,6 +21,7 @@ const SmurfVillage = (props) => {
     return (
         <div>
             <h1>Welcome to Smurf Village </h1>
+            <SmurfForm/>
             {props.smurfsData.map((smurf)=> (
                 <div>
                     <h3> Name:{smurf.name}</h3>

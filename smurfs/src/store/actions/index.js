@@ -7,6 +7,7 @@ export const FETCH_SMURFS_START = 'FETCH_SMURFS_START'
 export const FETCH_SMURFS_SUCCESS = 'FETCH_SMURFS_SUCCESS'
 export const FETCH_SMURFS_FAILURE = 'FETCH_SMURFS_FAILURE'
 
+
 // -------- Action Creator for getting data --------------
 export const fetchSmurfsData = () => dispatch => {
     // do async actions here
@@ -24,4 +25,27 @@ export const fetchSmurfsData = () => dispatch => {
 
 }
 
-// ------- Action Creator for Posting ------
+// -------- Action Types for Posting -----------
+export const ADD_SMURF = 'FETCH_SMURFS_START'
+// export const ADD_SMURF_SUCCESS = 'FETCH_SMURFS_SUCCESS'
+// export const ADD_SMURF_FAILURE = 'FETCH_SMURFS_FAILURE'
+
+
+// ------- Action Creator for Posting -----------
+
+export const pushNewSmurf = () => dispatch => {
+    dispatch({ type: ADD_SMURF })
+    
+    axios
+        .post('http://localhost:3333/smurfs', {
+            name: '',
+            age: '',
+            height:''
+        })
+        .then((res) =>{
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
