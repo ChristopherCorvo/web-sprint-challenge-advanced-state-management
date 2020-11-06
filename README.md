@@ -24,10 +24,32 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
+Answer:  The context API eliminates the need for prop drilling. Normally props need to be passed from parent to child in a long chain of ‘inheritance’. The context API allows you to share properties amongst many components without having to pass them down. This prevents the possibility of data mutation and corruption. 
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Answer: 
+
+Actions consist of every event or transition event that could take place in your application. Logging in is an action so is a loading screen while your back in verifies the log in information. Updating a cart with a new item is an action so is removing said item from a cart. (events that occur in the app based on user input
+
+Reducers are pure functions that take in state and an action event and return a change to state. With redux reducers become the main location for updating and changing state for multiple components. 
+
+In redux the store become the main repository for all your state. With redux we place state in more of a global region so that many apps have access to the contents  in a one directional relationship.
+
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Answer: 
+
+Redux and other libraries allow for the ability to hold application state but it might not always be necessary. Main rule of thumb for determining if you should be employing component state or application state is if the state data will need to be accessed by multiple components or just one. If the state data is only being used by one component then there is no point adding additional complexity to your application. If the state is being used by multiple components then use redux as an alternative to prop drilling.
+
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Answer: The reducer flow without thunk is synchronous. We use the redux thunk library to make the reducer flow asynchronous. Thunks acts as middle ground application that can intercept data and dispatch it in different directions based on its contents. So if it intercepts an action it will pass the action through to the reducer but if it intercepts a function it will call the thunk and pass the incoming function as an argument to thunk. 
+
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+Answer: At this point I’m leaning towards Redux. To me it seems less cumbersome than the context api. 
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
