@@ -33,15 +33,11 @@ export const ADD_SMURF = 'FETCH_SMURFS_START'
 
 // ------- Action Creator for Posting -----------
 
-export const pushNewSmurf = () => dispatch => {
-    dispatch({ type: ADD_SMURF })
+export const pushNewSmurf = (item) =>  {
+    // dispatch({ type: ADD_SMURF })
     
     axios
-        .post('http://localhost:3333/smurfs', {
-            name: '',
-            age: '',
-            height:''
-        })
+        .post('http://localhost:3333/smurfs', item)
         .then((res) =>{
             console.log(res)
         })

@@ -18,40 +18,28 @@ const initialState = {
 const SmurfForm = (props) => {
     const [smurfItem, setSmurfItem] = useState(initialState)
 
-    console.log(smurfItem)
+    console.log(smurfItem.name)
+    console.log(smurfItem.age)
+    console.log(smurfItem.height)
 
     // -------- helper functions -------------
     const handleChanges = (e) => {
-       setSmurfItem(e.target.value) 
+       setSmurfItem({
+           ...smurfItem,
+           [e.target.name]:e.target.value
+       }) 
     } 
 
-    const onSubmit = (e) => {
-        e.preventDefault()
 
-        console.log('Testing Form Submit')
-    }
-
-    // const test = (props) => {
-    //     useEffect (()=> {
-    //         props.pushNewSmurf()
-    //     }, [])
-        
-    // }
-
-    const test = () => {
-        axios
-            .post('http://localhost:3333/smurfs', smurfItem) 
-            .then((res) =>{
-                console.log(res)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+// ----- This needs to get outsourced to actions and reducer -------
+    const pushData = () => {
+        console.log(smurfItem)
+        pushNewSmurf(smurfItem)
     }
 
     return (
         <div>
-            <form onSubmit = {onSubmit} >
+            <form>
                 <label>Name:</label>
                 <input
                     type = 'text'
@@ -63,7 +51,7 @@ const SmurfForm = (props) => {
                 <label>Age:</label>
                 <input
                     type = 'text'
-                    name = 'Age'
+                    name = 'age'
                     value = {smurfItem.age}
                     onChange = {handleChanges}
                 />
@@ -71,13 +59,13 @@ const SmurfForm = (props) => {
                 <label>Height</label>
                 <input
                     type = 'text'
-                    name = 'Name'
+                    name = 'height'
                     value = {smurfItem.height}
                     onChange = {handleChanges}
                 />
 
                 <button onClick={() => {
-                   test()
+                   pushData()
                     // dispatch({ type: ADD_SMURF, payload: smurfItem })
                     // setSmurfItem(initialState)
                 }}> Submit </button>
